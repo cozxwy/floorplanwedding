@@ -837,7 +837,7 @@ const Home: NextPage = () => {
                 <img className="w-full " src="im.gif" alt="image description"/>   
 
 
-                <div className='bg-white rounded-t-lg p-10 overflow-y-auto '>
+                <div className='bg-white p-10 overflow-y-auto '>
                   
                   <div className='text-gray-400 my-auto mx-auto  '> โต๊ะเลขที่ #22</div>
                   <div className='text-gray-800 my-auto mx-auto  '> <b>AUSUS</b></div> <br/>
@@ -856,7 +856,7 @@ const Home: NextPage = () => {
                       <b className='mt-1 text-gray-800'>นที บุญศรีพรชัย</b>
                   </div>
                   <div className='basis-3/12'>
-                  <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'> 0</span>
+                  <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>0</span>
                     </div>
                   
 
@@ -879,7 +879,7 @@ const Home: NextPage = () => {
                       <b className='mt-1 text-gray-800'>ธนากร อุดมวิช</b>
                   </div>
                   <div className='basis-3/12'>
-                  <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'> 4</span>
+                  <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>4</span>
                     </div>  
                   
 
@@ -925,7 +925,7 @@ const Home: NextPage = () => {
                       <b className='mt-1 text-gray-800'>เจน วัลวิภา</b>
                   </div>
                   <div className='basis-3/12'>
-                     <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'> 3</span>
+                     <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>3</span>
                     </div>
                   
 
@@ -948,7 +948,7 @@ const Home: NextPage = () => {
                       <b className='mt-1 text-gray-800'>วรัญญู บ่อบางแก้ว</b>
                   </div>
                   <div className='basis-3/12'>
-                     <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'> 2</span>
+                     <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>2</span>
                     </div>
                   
 
@@ -971,7 +971,7 @@ const Home: NextPage = () => {
                       <b className='mt-1 text-gray-800'>อานา ลุงเม้ง</b>
                   </div>
                   <div className='basis-3/12'>
-                     <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'> 0</span>
+                     <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>0</span>
                     </div>
                   
 
@@ -994,7 +994,7 @@ const Home: NextPage = () => {
                       <b className='mt-1 text-gray-800'>ทรงพล ทิพธนวัฒนะ</b>
                   </div>
                   <div className='basis-3/12'>
-                     <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'> 0</span>
+                     <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>0</span>
                     </div>
                   
 
@@ -1017,7 +1017,7 @@ const Home: NextPage = () => {
                       <b className='mt-1 text-gray-800'>กฤษฎา นำศรีเจริญสุข</b>
                   </div>
                   <div className='basis-3/12'>
-                     <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'> 0</span>
+                     <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>0</span>
                     </div>
                   
 
@@ -1040,7 +1040,7 @@ const Home: NextPage = () => {
                       <b className='mt-1 text-gray-800'>ธัญชนก อันคมนา</b>
                   </div>
                   <div className='basis-3/12'>
-                     <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'> 1</span>
+                     <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>1</span>
                     </div>
                   
 
