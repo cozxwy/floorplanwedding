@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Kanit&display=swap");
+
+body{
+    font-family: 'Kanit', sans-serif;
+  
+}
+input::placeholder {
+    font-family: 'Kanit', sans-serif;
+}
+
+#location {
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+0% {
+    opacity: 0;
+}
+100% {
+    opacity: 1;
+ }
+
+}
+
+  
+     /* Loading Animation */
+     .button.loading:before {
+      content: "";
+      display: inline-block;
+      animation: spin 0.6s linear infinite;
+      margin-right: 8px;
+    }
+  
+    @keyframes spin {
+      0% {
+        transform: rotate(0);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
