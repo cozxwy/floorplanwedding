@@ -9,6 +9,8 @@ import localFont from  'next/font/local'
 import { motion , AnimatePresence  } from 'framer-motion';
 import { version } from 'react';
 
+import Tables from "./plan.json"
+
 import styles from '../styles/Home.module.css'
 
 const poppins = localFont({
@@ -31,14 +33,47 @@ const Home: NextPage = () => {
     const [license_plate, setlicense_plate] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    
+    const [isPlanA, setIsPlanA] = useState(false);
+ 
+    const [listGuest, setlistGuest] = useState('');
     const handleClickLoad = () => {
      
     };
+
+    const searchPhone = async (e: any) => {
+      if(e.length == 10)  {
+        setIsPlanA(true)
+      }
+      else  setIsPlanA(false)
+
+
+    //  console.log(Tables['table'][0]['peoples'])
+
+    let guestListTemp = '';
+
+    for (let i = 0; i < Tables['table'].length; i++) {
+      console.log(Tables['table'][i]['groupType'])
+      guestListTemp+=Tables['table'][i]['groupType']+ '<br/>'
+      for (let j = 0; j < Tables['table'][i]['peoples'].length; j++) {
+
+      console.log(Tables['table'][i]['peoples'][j]['name'])
+      guestListTemp+=Tables['table'][i]['groupType'] + '<br/>'
+    }
+    
+  }
+
+  setlistGuest(guestListTemp)
+    
+};
+
+
     const [follow, setFollow] = useState('');
     const [message, setMessage] = useState('');
     const [team, setTeam] = useState('');
 
   
+    
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -90,6 +125,7 @@ const Home: NextPage = () => {
         setFollow('default')
         setTeam('')
         setlicense_plate('')
+
     }
 
     return (
@@ -827,230 +863,274 @@ const Home: NextPage = () => {
              </div>
 
                         {/* stop scroll*/} 
-              <div className="snap-start overflow-auto max-w-xl mx-auto py-16 bg-scroll bg-[#CECECD] bg-auto bg-center bg-no-repeat h-[844px] p-3 h-1 " id="">
+              <div className="snap-start overflow-auto max-w-xl mx-auto py-16 bg-scroll bg-[#CECECD] bg-auto bg-center bg-no-repeat h-[844px] p-3 h-1 m-0   " id="">
+                
 
 
 
                 <br></br>
 
                   
-                <img className="w-full " src="im.gif" alt="image description"/>   
+                <img className="w-full    " src="im.gif" alt="image description"/>  
+                {isPlanA ? '': ''}
 
 
-                <div className='bg-white p-10 overflow-y-auto '>
+
+                <div className='bg-white p-10  rounded-b-lg'>
                   
+                  <div className='flex flex-row'>
+                    <div className='basis-1/2'>
+
+                      
                   <div className='text-gray-400 my-auto mx-auto  '> โต๊ะเลขที่ #22</div>
                   <div className='text-gray-800 my-auto mx-auto  '> <b>AUSUS</b></div> <br/>
 
-                  <div className='text-gray-800 my-auto mx-auto border-4 border-white border-l-indigo-500 flex-row flex h-9 mt-5'>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                  <div className='basis-2/12'>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0" stroke="currentColor" className=" fill-indigo-500 w-7 h-7">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5
-                    0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                  </svg> 
-                  </div>
-
-                  <div className='basis-7/12'>
-                      <b className='mt-1 text-gray-800'>นที บุญศรีพรชัย</b>
-                  </div>
-                  <div className='basis-3/12'>
-                  <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>0</span>
-                    </div>
-                  
-
-                  
-                   
-                   
 
                     </div>
-                    <div className='text-gray-800 my-auto mx-auto border-4 border-white border-l-indigo-500 flex-row flex h-9  mt-5'>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div className='basis-1/2'>
 
-                  <div className='basis-2/12'>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0" stroke="currentColor" className=" fill-indigo-500 w-7 h-7">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5
-                    0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                  </svg> 
-                  </div>
 
-                  <div className='basis-7/12'>
-                      <b className='mt-1 text-gray-800'>ธนากร อุดมวิช</b>
-                  </div>
-                  <div className='basis-3/12'>
-                  <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>4</span>
-                    </div>  
-                  
 
-                  
-                   
-                   
+                  <form>
+                    <div className="flex">
+                        <div className="relative w-full">
+                            <input type="text" id="" className="block p-2.5 w-full z-20 text-sm 
+                            text-gray-900 bg-white rounded-r-lg rounded-l-lg
+                             border-l-gray-100 border border-gray-300 focus:ring-blue-500 
+                            focus:border-blue-500 dark:bg-white  dark:placeholder-gray-400 dark:text-black
+                             dark:focus:border-blue-500"  autoComplete="off"  onChange={e => searchPhone(e.target.value)} placeholder="Search" required/>
+
+                            <button type="submit" className="absolute top-0 right-0 p-2.5 text-sm font-medium text-white 
+                            bg-blue-700 rounded-r-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none 
+                            focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                              <svg aria-hidden="true" className="w-5 h-5" fill="none" stroke="currentColor"
+                               viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round"
+                                strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                        </div>
+                    </div>
+                </form>
+
+
+
+
 
                     </div>
-                    <div className='text-gray-800 my-auto mx-auto border-4 border-white border-l-indigo-500 flex-row flex h-9  mt-5'>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                  <div className='basis-2/12'>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0" stroke="currentColor" className=" fill-indigo-500 w-7 h-7">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5
-                    0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                  </svg> 
                   </div>
 
-                  <div className='basis-7/12'>
-                      <b className='mt-1 text-gray-800'>นที บุญศรีพรชัaasdasdsadsaย</b>
-                  </div>
-                  <div className='basis-3/12'>
-                     <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'> 0</span>
-                    </div>
-                  
+                  {isPlanA ?  
+     
+  <div id="namelist">
 
-                  
-                   
-                   
+<div className='text-gray-800 my-auto mx-auto border-4 border-white border-l-indigo-500 flex-row flex h-9 mt-5  '>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                    </div>
-                    <div className='text-gray-800 my-auto mx-auto border-4 border-white border-l-indigo-500 flex-row flex h-9  mt-5'>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div className='basis-2/12'>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0" stroke="currentColor" className=" fill-indigo-500 w-7 h-7">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5
+  0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+</svg> 
+</div>
 
-                  <div className='basis-2/12'>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0" stroke="currentColor" className=" fill-indigo-500 w-7 h-7">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5
-                    0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                  </svg> 
-                  </div>
-
-                  <div className='basis-7/12'>
-                      <b className='mt-1 text-gray-800'>เจน วัลวิภา</b>
-                  </div>
-                  <div className='basis-3/12'>
-                     <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>3</span>
-                    </div>
-                  
-
-                  
-                   
-                   
-
-                    </div>
-                    <div className='text-gray-800 my-auto mx-auto border-4 border-white border-l-indigo-500 flex-row flex h-9  mt-5'>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                  <div className='basis-2/12'>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0" stroke="currentColor" className=" fill-indigo-500 w-7 h-7">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5
-                    0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                  </svg> 
-                  </div>
-
-                  <div className='basis-7/12'>
-                      <b className='mt-1 text-gray-800'>วรัญญู บ่อบางแก้ว</b>
-                  </div>
-                  <div className='basis-3/12'>
-                     <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>2</span>
-                    </div>
-                  
-
-                  
-                   
-                   
-
-                    </div>
-                    <div className='text-gray-800 my-auto mx-auto border-4 border-white border-l-indigo-500 flex-row flex h-9  mt-5'>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                  <div className='basis-2/12'>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0" stroke="currentColor" className=" fill-indigo-500 w-7 h-7">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5
-                    0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                  </svg> 
-                  </div>
-
-                  <div className='basis-7/12'>
-                      <b className='mt-1 text-gray-800'>อานา ลุงเม้ง</b>
-                  </div>
-                  <div className='basis-3/12'>
-                     <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>0</span>
-                    </div>
-                  
-
-                  
-                   
-                   
-
-                    </div>
-                    <div className='text-gray-800 my-auto mx-auto border-4 border-white border-l-indigo-500 flex-row flex h-9  mt-5'>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                  <div className='basis-2/12'>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0" stroke="currentColor" className=" fill-indigo-500 w-7 h-7">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5
-                    0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                  </svg> 
-                  </div>
-
-                  <div className='basis-7/12'>
-                      <b className='mt-1 text-gray-800'>ทรงพล ทิพธนวัฒนะ</b>
-                  </div>
-                  <div className='basis-3/12'>
-                     <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>0</span>
-                    </div>
-                  
-
-                  
-                   
-                   
-
-                    </div>
-                    <div className='text-gray-800 my-auto mx-auto border-4 border-white border-l-indigo-500 flex-row flex h-9  mt-5'>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                  <div className='basis-2/12'>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0" stroke="currentColor" className=" fill-indigo-500 w-7 h-7">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5
-                    0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                  </svg> 
-                  </div>
-
-                  <div className='basis-7/12'>
-                      <b className='mt-1 text-gray-800'>กฤษฎา นำศรีเจริญสุข</b>
-                  </div>
-                  <div className='basis-3/12'>
-                     <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>0</span>
-                    </div>
-                  
-
-                  
-                   
-                   
-
-                    </div>
-                    <div className='text-gray-800 my-auto mx-auto border-4 border-white border-l-indigo-500 flex-row flex h-9  mt-5'>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                  <div className='basis-2/12'>
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0" stroke="currentColor" className=" fill-indigo-500 w-7 h-7">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5
-                    0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                  </svg> 
-                  </div>
-
-                  <div className='basis-7/12'>
-                      <b className='mt-1 text-gray-800'>ธัญชนก อันคมนา</b>
-                  </div>
-                  <div className='basis-3/12'>
-                     <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>1</span>
-                    </div>
-                  
-
-                  
-                   
-                   
-
-                    </div>
+<div className='basis-7/12'>
+    <b className='mt-1 text-gray-800'>นที บุญศรีพรชัย</b>
+</div>
+<div className='basis-3/12'>
+<span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>0</span>
+  </div>
 
 
+
+ 
+ 
+
+</div>
+<div className='text-gray-800 my-auto mx-auto border-4 border-white border-l-indigo-500 flex-row flex h-9  mt-5'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<div className='basis-2/12'>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0" stroke="currentColor" className=" fill-indigo-500 w-7 h-7">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5
+  0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+</svg> 
+</div>
+
+<div className='basis-7/12'>
+    <b className='mt-1 text-gray-800'>ธนากร อุดมวิช</b>
+</div>
+<div className='basis-3/12'>
+<span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>4</span>
+  </div>  
+
+
+
+ 
+ 
+
+</div>
+<div className='text-gray-800 my-auto mx-auto border-4 border-white border-l-indigo-500 flex-row flex h-9  mt-5'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<div className='basis-2/12'>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0" stroke="currentColor" className=" fill-indigo-500 w-7 h-7">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5
+  0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+</svg> 
+</div>
+
+<div className='basis-7/12'>
+    <b className='mt-1 text-gray-800'>นที บุญศรีพรชัaasdasdsadsaย</b>
+</div>
+<div className='basis-3/12'>
+   <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'> 0</span>
+  </div>
+
+
+
+ 
+ 
+
+</div>
+<div className='text-gray-800 my-auto mx-auto border-4 border-white border-l-indigo-500 flex-row flex h-9  mt-5'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<div className='basis-2/12'>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0" stroke="currentColor" className=" fill-indigo-500 w-7 h-7">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5
+  0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+</svg> 
+</div>
+
+<div className='basis-7/12'>
+    <b className='mt-1 text-gray-800'>เจน วัลวิภา</b>
+</div>
+<div className='basis-3/12'>
+   <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>3</span>
+  </div>
+
+
+
+ 
+ 
+
+</div>
+<div className='text-gray-800 my-auto mx-auto border-4 border-white border-l-indigo-500 flex-row flex h-9  mt-5'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<div className='basis-2/12'>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0" stroke="currentColor" className=" fill-indigo-500 w-7 h-7">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5
+  0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+</svg> 
+</div>
+
+<div className='basis-7/12'>
+    <b className='mt-1 text-gray-800'>วรัญญู บ่อบางแก้ว</b>
+</div>
+<div className='basis-3/12'>
+   <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>2</span>
+  </div>
+
+
+
+ 
+ 
+
+  </div>
+  <div className='text-gray-800 my-auto mx-auto border-4 border-white border-l-indigo-500 flex-row flex h-9  mt-5'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<div className='basis-2/12'>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0" stroke="currentColor" className=" fill-indigo-500 w-7 h-7">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5
+  0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+</svg> 
+</div>
+
+<div className='basis-7/12'>
+    <b className='mt-1 text-gray-800'>อานา ลุงเม้ง</b>
+</div>
+<div className='basis-3/12'>
+   <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>0</span>
+  </div>
+
+
+
+ 
+ 
+
+  </div>
+  <div className='text-gray-800 my-auto mx-auto border-4 border-white border-l-indigo-500 flex-row flex h-9  mt-5'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<div className='basis-2/12'>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0" stroke="currentColor" className=" fill-indigo-500 w-7 h-7">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5
+  0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+</svg> 
+</div>
+
+<div className='basis-7/12'>
+    <b className='mt-1 text-gray-800'>ทรงพล ทิพธนวัฒนะ</b>
+</div>
+<div className='basis-3/12'>
+   <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>0</span>
+  </div>
+
+
+
+ 
+ 
+
+  </div>
+  <div className='text-gray-800 my-auto mx-auto border-4 border-white border-l-indigo-500 flex-row flex h-9  mt-5'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<div className='basis-2/12'>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0" stroke="currentColor" className=" fill-indigo-500 w-7 h-7">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5
+  0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+</svg> 
+</div>
+
+<div className='basis-7/12'>
+    <b className='mt-1 text-gray-800'>กฤษฎา นำศรีเจริญสุข</b>
+</div>
+<div className='basis-3/12'>
+   <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>0</span>
+  </div>
+
+
+
+ 
+ 
+
+  </div>
+  <div className='text-gray-800 my-auto mx-auto border-4 border-white border-l-indigo-500 flex-row flex h-9  mt-5'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<div className='basis-2/12'>
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0" stroke="currentColor" className=" fill-indigo-500 w-7 h-7">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5
+  0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+</svg> 
+</div>
+
+<div className='basis-7/12'>
+    <b className='mt-1 text-gray-800'>ธัญชนก อันคมนา</b>
+</div>
+<div className='basis-3/12'>
+   <span className='mt-1 ml-2 text-gray-400'>ผู้ติดตาม: </span> <span className='mt-1 text-gray-800 ml-1'>1</span>
+  </div>
+
+
+
+ 
+ 
+
+  </div>
+
+  </div>: ''}
+                 
 
                   
                     
